@@ -19,13 +19,13 @@ Cookie通过在客户端记录信息确定用户身份，Session通过在服务�
 服务器检查该Cookie，以此来辨认用户状态。服务器还可以根据需要修改Cookie的内容。
 ps：查看某个网站颁发的Cookie很简单。在浏览器地址栏输入javascript:alert (document. cookie)就可以了（需要有网才能查看）
 
-注意：Cookie功能需要浏览器的支持。如果浏览器不支持cookie（如大部分手机浏览器）或者把cookie禁用来，cookie就会失效。
+  注意：Cookie功能需要浏览器的支持。如果浏览器不支持cookie（如大部分手机浏览器）或者把cookie禁用来，cookie就会失效。
 不同的浏览器采用不同的方式保存cookie。
 
 - Cookie的不可跨域名性
 需要注意的是，虽然网站images.google.com与网站www.google.com同属于Google，但是域名不一样，二者同样不能互相操作彼此的Cookie。
 
-注意：用户登录网站www.google.com之后会发现访问images.google.com时登录信息仍然有效，而普通的Cookie是做不到的。
+  注意：用户登录网站www.google.com之后会发现访问images.google.com时登录信息仍然有效，而普通的Cookie是做不到的。
 这是因为Google做了特殊处理。本章后面也会对Cookie做类似的处理。
 
 - Unicode编码：保存中文
@@ -36,7 +36,7 @@ Cookie中使用Unicode字符时需要对Unicode字符进行编码，否则会乱
 Cookie不仅可以使用ASCII字符与Unicode字符，还可以使用二进制数据。例如在Cookie中使用数字证书，提供安全度。
 使用二进制数据时也需要进行编码。
 
-注意：本程序仅用于展示Cookie中可以存储二进制内容，并不实用。由于浏览器每次请求服务器都会携带Cookie，
+  注意：本程序仅用于展示Cookie中可以存储二进制内容，并不实用。由于浏览器每次请求服务器都会携带Cookie，
 因此Cookie内容不宜过多，否则影响速度。Cookie的内容应该少而精。
 
 - Cookie的有效期
@@ -50,10 +50,10 @@ maxAge为负数的Cookie，为临时性Cookie，不会被持久化，不会被�
 response对象提供的Cookie操作方法只有一个添加操作add(Cookie cookie)。
 要想修改Cookie只能使用一个同名的Cookie来覆盖原来的Cookie，达到修改的目的。删除时只需要把maxAge修改为0即可。
 
-注意：从客户端读取Cookie时，包括maxAge在内的其他属性都是不可读的，也不会被提交。浏览器提交Cookie时只会提交name与value属性。
+  注意：从客户端读取Cookie时，包括maxAge在内的其他属性都是不可读的，也不会被提交。浏览器提交Cookie时只会提交name与value属性。
 maxAge属性只被浏览器用来判断Cookie是否过期。 亦可操作 expires 参数使cookie过期。
 
-注意：修改、删除Cookie时，新建的Cookie除value、maxAge之外的所有属性，例如name、path、domain等，都要与原Cookie完全一样。
+  注意：修改、删除Cookie时，新建的Cookie除value、maxAge之外的所有属性，例如name、path、domain等，都要与原Cookie完全一样。
 否则，浏览器将视为两个不同的Cookie不予覆盖，导致修改、删除失败。
 
 - Cookie的域名
@@ -66,7 +66,7 @@ cookie.setPath("/");                              // 设置路径
 cookie.setMaxAge(Integer.MAX_VALUE);               // 设置有效期
 response.addCookie(cookie);                       // 输出到客户端
 
-注意：domain参数必须以点(".")开始。另外，name相同但domain不同的两个Cookie是两个不同的Cookie。如果想要两个域名完全不同的
+  注意：domain参数必须以点(".")开始。另外，name相同但domain不同的两个Cookie是两个不同的Cookie。如果想要两个域名完全不同的
 网站共有Cookie，可以生成两个Cookie，domain属性分别为两个域名，输出到客户端
 
 - Cookie的路径
@@ -77,11 +77,11 @@ cookie.setPath("/session/");                          // 设置路径
 response.addCookie(cookie);                           // 输出到客户端
 设置为“/”时允许所有路径使用Cookie。path属性需要使用符号“/”结尾。name相同但domain相同的两个Cookie也是两个不同的Cookie。
 
-注意：页面只能获取它属于的Path的Cookie。例如/session/test/a.jsp不能获取到路径为/session/abc/的Cookie。使用时一定要注意。
+  注意：页面只能获取它属于的Path的Cookie。例如/session/test/a.jsp不能获取到路径为/session/abc/的Cookie。使用时一定要注意。
 
 - Cookie的安全属性
 如果不希望Cookie在HTTP等非安全协议中传输，可以设置Cookie的secure属性为true。浏览器只会在HTTPS和SSL等安全协议中传输此类Cookie。
-提示：secure属性并不能对Cookie内容加密，因而不能保证绝对的安全性。如果需要高安全性，需要在程序中对Cookie内容加密、解密，以防泄密。
+  提示：secure属性并不能对Cookie内容加密，因而不能保证绝对的安全性。如果需要高安全性，需要在程序中对Cookie内容加密、解密，以防泄密。
 
 ## Session
 除了使用Cookie，Web应用程序中还经常使用Session来记录客户端状态。Session是服务器端使用的一种记录客户端状态的机制，
@@ -94,7 +94,7 @@ Session是另一种记录客户状态的机制，不同的是Cookie保存在客�
 身份。Session相当于程序在服务器上建立的一份客户档案，客户来访的时候只需要查询客户档案表就可以了。
 Session机制决定了当前客户只会获取到自己的Session，而不会获取到别人的Session。各客户的Session也彼此独立，互不可见。
 
-提示：Session的使用比Cookie方便，但是过多的Session存储在服务器内存中，会对服务器造成压力。
+  提示：Session的使用比Cookie方便，但是过多的Session存储在服务器内存中，会对服务器造成压力。
 
 - Session的生命周期
 Session保存在服务器端。为了获得更高的存取速度，服务器一般把Session放在内存里。每个用户都会有一个独立的Session。
@@ -112,10 +112,7 @@ HTTP协议是无状态的，Session不能依据HTTP连接来判断是否为同�
 因此同一机器的两个浏览器窗口访问服务器时，会生成两个不同的Session。但是由浏览器窗口内的链接、脚本等打开的新窗口
 （也就是说不是双击桌面浏览器图标等打开的窗口）除外。这类子窗口会共享父窗口的Cookie，因此会共享一个Session。
 
-注意：新开的浏览器窗口会生成新的Session，但子窗口除外。子窗口会共用父窗口的Session。例如，在链接上右击，在弹出的快捷菜单中
-选择“在新窗口中打开”时，子窗口便可以访问父窗口的Session。
-如果客户端浏览器将Cookie功能禁用，或者不支持Cookie怎么办？例如，绝大多数的手机浏览器都不支持Cookie。Java Web提供了另一种
-解决方案：URL地址重写。服务端操作，在此省略。
+  注意：新开的浏览器窗口会生成新的Session，但子窗口除外。子窗口会共用父窗口的Session。例如，在链接上右击，在弹出的快捷菜单中选择“在新窗口中打开”时，子窗口便可以访问父窗口的Session。如果客户端浏览器将Cookie功能禁用，或者不支持Cookie怎么办？例如，绝大多数的手机浏览器都不支持Cookie。Java Web提供了另一种解决方案：URL地址重写。服务端操作，在此省略。
 
 
 ### sessionStrage & localStrage
@@ -124,7 +121,7 @@ HTML5 提供了两种在客户端存储数据的新方法：
 localStorage - 没有时间限制的数据存储
 sessionStorage - 针对一个 session 的数据存储
 sessionStorage不是一种持久化存储，浏览器关闭之后会随之清除。而localStorage用于持久化的本地存储，除非主动删除数据，否则数据是永远不会过期的。
- sessionStorage数据的存储仅特定于某个会话中，也就是说数据只保持到浏览器关闭，当浏览器关闭后重新打开这个页面时，之前的存储已经被清除。而 localStorage 是一个持久化的存储，它并不局限于会话。
+sessionStorage数据的存储仅特定于某个会话中，也就是说数据只保持到浏览器关闭，当浏览器关闭后重新打开这个页面时，之前的存储已经被清除。而 localStorage 是一个持久化的存储，它并不局限于会话。
 
 ### indexDB
 indexDB是一种轻量级NOSQL数据库。相比web sql(sqlite)更加高效，包括索引、事务处理和健壮的查询功能。
