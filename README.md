@@ -123,8 +123,8 @@ sessionStorage - 针对一个 session 的数据存储
 sessionStorage不是一种持久化存储，浏览器关闭之后会随之清除。而localStorage用于持久化的本地存储，除非主动删除数据，否则数据是永远不会过期的。
 sessionStorage数据的存储仅特定于某个会话中，也就是说数据只保持到浏览器关闭，当浏览器关闭后重新打开这个页面时，之前的存储已经被清除。而 localStorage 是一个持久化的存储，它并不局限于会话。
 
-### indexDB
-indexDB是一种轻量级NOSQL数据库。相比web sql(sqlite)更加高效，包括索引、事务处理和健壮的查询功能。
+### indexedDB
+indexedDB是一种轻量级NOSQL数据库。相比web sql(sqlite)更加高效，包括索引、事务处理和健壮的查询功能。
 
 它的特点包括：
 一个网站可能有一个或多个 IndexedDB 数据库，每个数据库必须具有惟一的名称。
